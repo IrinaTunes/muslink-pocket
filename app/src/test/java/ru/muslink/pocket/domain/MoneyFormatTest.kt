@@ -8,16 +8,18 @@ class MoneyFormatTest {
 
     @Test
     fun formatKopecks_usesRublesAndKopecks() {
+        val nbsp = '\u00A0'
         assertEquals("0,00 ₽", MoneyFormat.formatKopecks(0))
         assertEquals("1,50 ₽", MoneyFormat.formatKopecks(150))
-        assertEquals("1 500,00 ₽", MoneyFormat.formatKopecks(150_000))
-        assertEquals("1 234 567,89 ₽", MoneyFormat.formatKopecks(123_456_789))
+        assertEquals("1${nbsp}500,00 ₽", MoneyFormat.formatKopecks(150_000))
+        assertEquals("1${nbsp}234${nbsp}567,89 ₽", MoneyFormat.formatKopecks(123_456_789))
         assertEquals("-250,00 ₽", MoneyFormat.formatKopecks(-25_000))
     }
 
     @Test
     fun formatAmount_hasNoCurrencySuffix() {
-        assertEquals("1 500,00", MoneyFormat.formatAmount(150_000))
+        val nbsp = '\u00A0'
+        assertEquals("1${nbsp}500,00", MoneyFormat.formatAmount(150_000))
     }
 
     @Test

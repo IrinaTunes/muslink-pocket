@@ -33,7 +33,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -45,7 +44,6 @@ fun SettingsScreen(vm: AppViewModel) {
     val enabled by vm.reminderEnabled.collectAsStateWithLifecycle()
     val hour by vm.reminderHour.collectAsStateWithLifecycle()
     val minute by vm.reminderMinute.collectAsStateWithLifecycle()
-    val context = LocalContext.current
 
     val permissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestPermission()
